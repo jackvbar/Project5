@@ -1,9 +1,12 @@
+package com.company;
+
+import com.company.Event;
+
 /**
- * Created by jack on 11/30/2014.
+ * Created by jack on 12/2/2014.
  */
-/**
- * The Stick Game event
- */
+/* The Stick Game event
+        */
 public class StickGameEvent extends Event {
     private int frisbeeSize;
 

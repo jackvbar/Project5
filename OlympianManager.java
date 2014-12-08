@@ -1,6 +1,9 @@
-/**
- * Created by jack on 11/30/2014.
+package com.company; /**
+ * Created by jack on 12/2/2014.
  */
+
+
+import com.company.Olympian;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;

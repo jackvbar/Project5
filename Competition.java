@@ -1,8 +1,8 @@
-/**
- * Created by jack on 11/30/2014.
+package com.company; /**
+ * Created by jack on 12/2/2014.
  */
 /**
- * The implementation of the ICompetition interface.  This implementation allows multiple instances of a Competition
+ * The implementation of the com.company.ICompetition interface.  This implementation allows multiple instances of a com.company.Competition
  * to be chained together in a doubly linked list.
  */
 public class Competition implements ICompetition {
@@ -14,7 +14,7 @@ public class Competition implements ICompetition {
     private Competition prev;
 
     /**
-     * Construct a new Competition
+     * Construct a new com.company.Competition
      *
      * @param event the event associated with this competition
      * @param homeTeam the home team associated with this competition
@@ -89,4 +89,5 @@ public class Competition implements ICompetition {
         this.prev = prev;
     }
 }
+
 

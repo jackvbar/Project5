@@ -1,6 +1,9 @@
-/**
- * Created by jack on 11/30/2014.
+package com.company; /**
+ * Created by jack on 12/2/2014.
  */
+
+import com.company.Competition;
+
 /**
  * This class manages a list of competitions.
  */
@@ -11,9 +14,12 @@ public class CompetitionManager {
     private Competition head;
     private Competition tail;
     private int numCompetitions;
+    private CompetitionManager cm;
+    private  Competition c;
+
 
     /**
-     * Construct a new CompetitionManager
+     * Construct a new com.company.CompetitionManager
      *
      * @param em the event manager that manages which events can be played in a competition
      * @param tm the team manager that manages the teams that can participate in a competition
@@ -75,11 +81,15 @@ public class CompetitionManager {
      * @param competition the competition to end
      * @param winningTeam the team that won the competition
      */
+
+
+
     public void endCompetition(ICompetition competition, Team winningTeam)
     {
+        cm.endCompetition(c, c.getAwayTeam());
         Competition currItem = head;
 
-        //find the item (or find the end of the list
+        //find the item (or find the end of the list)
         while(currItem != null && currItem != competition)
             currItem = currItem.getNext();
 
@@ -109,7 +119,9 @@ public class CompetitionManager {
             currItem.getHomeTeam().incrementLosses();
             currItem.getAwayTeam().incrementWins();
         }
-    }
+
+
+      }
 
     /**
      * Retrieve the events that are currently not being played (they are open).
@@ -199,4 +211,5 @@ public class CompetitionManager {
         return true;
     }
 }
+
 

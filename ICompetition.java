@@ -1,8 +1,11 @@
-/**
- * Created by jack on 11/30/2014.
+package com.company; /**
+ * Created by jack on 12/2/2014.
  */
+
+import com.company.Event;
+
 /**
- * The ICompetition interface provides the contract for exploiters to retrieve information about a competition.
+ * The com.company.ICompetition interface provides the contract for exploiters to retrieve information about a competition.
  */
 public interface ICompetition {
 

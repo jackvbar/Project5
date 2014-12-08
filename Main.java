@@ -1,6 +1,7 @@
-/**
- * Created by jack on 11/30/2014.
+package com.company; /**
+ * Created by jack on 12/2/2014.
  */
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -20,7 +21,7 @@ public class Main {
     private BufferedReader input;
 
     /**
-     * Construct a new instance of the Main class
+     * Construct a new instance of the com.company.Main class
      *
      * @param filePath the path to the lgoo file which contains the olympians
      */
@@ -92,7 +93,7 @@ public class Main {
 
         Olympian[] olympians = om.getOlympians();
 
-        System.out.println("Name        Sex     Age");
+        System.out.println("Name        com.company.Sex     Age");
         System.out.println("----------  ------  ---");
         for(int i=0; i < olympians.length; i++)
             System.out.printf("%-10s  %-6s  %3d\n", olympians[i].getName(), olympians[i].getSex(), olympians[i].getAge());
@@ -140,7 +141,7 @@ public class Main {
 
         ICompetition[] competitions = cm.getCompetitions();
 
-        System.out.println("Event        Home Team             Away Team");
+        System.out.println("com.company.Event        Home com.company.Team             Away com.company.Team");
         System.out.println("-----------  --------------------  --------------------");
         for(int i=0; i < competitions.length; i++)
             System.out.printf("%-11s  %-20s  %-20s\n", competitions[i].getEvent().getName(), competitions[i].getHomeTeam(), competitions[i].getAwayTeam());
@@ -153,7 +154,7 @@ public class Main {
      */
     private void startCompetition() throws IOException
     {
-        System.out.println("Lawn Game Olympics New Competition");
+        System.out.println("Lawn Game Olympics New com.company.Competition");
         System.out.println();
         Event[] freeEvents = cm.getFreeEvents();
         Team[] freeTeams = cm.getFreeTeams();
@@ -183,7 +184,7 @@ public class Main {
             for (int i = 0; i < freeEvents.length; i++)
                 System.out.printf("%-2d  %-11s\n", (i+1), freeEvents[i].getName());
             System.out.println();
-            System.out.print("Enter Event to begin:  ");
+            System.out.print("Enter com.company.Event to begin:  ");
 
             try {
                 eventIdx = Integer.parseInt(input.readLine());
@@ -231,7 +232,7 @@ public class Main {
      */
     private void endCompetition() throws IOException
     {
-        System.out.println("Lawn Game Olympics End Competition");
+        System.out.println("Lawn Game Olympics End com.company.Competition");
         System.out.println();
 
         ICompetition[] competitions = cm.getCompetitions();
@@ -250,7 +251,7 @@ public class Main {
         do {
             System.out.println("Current Competitions:");
             System.out.println();
-            System.out.println("Id  Event       Competition");
+            System.out.println("Id  com.company.Event       com.company.Competition");
             System.out.println("--  ----------  ------------------------------");
             for (int i = 0; i < competitions.length; i++)
                 System.out.printf("%-2d  %-11s  %-30s\n", i+1, competitions[i].getEvent().getName(), competitions[i].getHomeTeam() + " vs " + competitions[i].getAwayTeam());
@@ -272,12 +273,12 @@ public class Main {
         do {
             System.out.println("Teams:");
             System.out.println();
-            System.out.println("Id  Team");
+            System.out.println("Id  com.company.Team");
             System.out.println("--  --------------------");
             System.out.println(" 1  " + competition.getHomeTeam());
             System.out.println(" 2  " + competition.getAwayTeam());
             System.out.println();
-            System.out.print("Enter Team that won:  ");
+            System.out.print("Enter com.company.Team that won:  ");
             try {
                 winningTeamIdx = Integer.parseInt(input.readLine());
                 if(winningTeamIdx == 1 || winningTeamIdx == 2)
@@ -319,7 +320,7 @@ public class Main {
     public static void main(String[] args) {
         if(args.length != 1)
         {
-            System.out.println("Invalid number of arguments, format is: java edu.marist.cmpt220l.Main <lgoo_file>");
+            System.out.println("Invalid number of arguments, format is: java edu.marist.cmpt220l.com.company.Main <lgoo_file>");
             return;
         }
 

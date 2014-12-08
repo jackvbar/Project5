@@ -1,9 +1,14 @@
+package com.company; /**
+ * Created by jack on 12/2/2014.
+ */
 /**
  * Created by jack on 11/30/2014.
  */
 
+import com.company.Olympian;
+
 /**
- * The Team class represents two olympians that have been paired up for the games
+ * The com.company.Team class represents two olympians that have been paired up for the games
  */
 public class Team {
     private Olympian olympian1;
@@ -12,7 +17,7 @@ public class Team {
     private int numLosses;
 
     /**
-     * Construct a new Team object
+     * Construct a new com.company.Team object
      *
      * @param olympian1 the first olympian on the team
      * @param olympian2 the second olympian on the team

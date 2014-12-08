@@ -1,17 +1,25 @@
+package com.company; /**
+ * Created by jack on 12/2/2014.
+ */
 /**
  * Created by jack on 11/30/2014.
  */
+import com.company.Olympian;
+import com.company.OlympianManager;
+import com.company.Sex;
+import com.company.Team;
+
 import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * A TeamManager manages instances of teams
+ * A com.company.TeamManager manages instances of teams
  */
 public class TeamManager {
     private Team[] teams;
 
     /**
-     * Construct a new TeamManager object.
+     * Construct a new com.company.TeamManager object.
      *
      * @param om The olympian manager which provides the olympians to create teams from
      */

@@ -1,9 +1,13 @@
-/**
- * Created by jack on 11/30/2014.
+package com.company; /**
+ * Created by jack on 12/2/2014.
  */
+
+import java.time.temporal.TemporalAmount;
+
 /**
  * An abstract event that can be played by olympians
  */
+
 public abstract class Event {
     private String name;
     private int playTo;
@@ -103,4 +107,6 @@ public abstract class Event {
     public void setPlayDistance(int playDistance) {
         this.playDistance = playDistance;
     }
+
 }
+

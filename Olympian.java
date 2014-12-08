@@ -1,8 +1,8 @@
-/**
- * Created by jack on 11/30/2014.
+package com.company; /**
+ * Created by jack on 12/2/2014.
  */
 /**
- * The Olympian class represents a single olympian in the games
+ * The com.company.Olympian class represents a single olympian in the games
  */
 public class Olympian {
     private String name;
