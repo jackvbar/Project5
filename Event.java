@@ -108,5 +108,14 @@ public abstract class Event {
         this.playDistance = playDistance;
     }
 
+
+
+    public void enqueueWinner(Team team1){
+        //might have to take in an int instead of team because of the endcompetition.
+    }
+
+    public void PlacingStack(){
+
+    }
 }
 

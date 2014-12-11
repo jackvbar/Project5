@@ -3,36 +3,42 @@ package com.company;
 /**
  * Created by jack on 12/2/2014.
  */
-public class BracketQueue{
+public class BracketQueue {
 
         private Bracket first;
         private Bracket last;
         private Bracket currItem;
+        private int i = 0;
 
         public BracketQueue() {
             first = last = currItem = new Bracket();
+
         }
 
-        public void enqueue(Team teams) {
+        public void enqueue(Team[] teams) {
             Bracket q = new Bracket(teams);
-            if (first == null || first.getValue() == -1) {
+            if (first == null || first.getValue() == null) {
                 first = q;
                 last = q;
                 currItem = q;
+                i++;
+
             } else {
                 last = q;
                 currItem.setNext(q);
                 currItem = q;
+                i++;
             }
         }
 
-        public int dequeue() {
+        public Team dequeue() {
             if (first == null) {
-                return -1;
+                return null;
             } else {
-                int returnInt = first.getValue();
+                Team returnTeam = first.getValue();
                 first = first.getNext();
-                return returnInt;
+                i--;
+                return returnTeam;
             }
         }
 
@@ -44,27 +50,47 @@ public class BracketQueue{
             }
         }
 
-        public void createBracket(Team[] teams){
-            BracketQueue bracket = new BracketQueue();
-            for( int i = 0; i< teams.length; i++){
-                bracket.enqueue(teams[i]);
-            }
+    public Team[] peekNextTeams(){
+        if (first == null)
+                return null;
+        else {
+            Team temp1 = first.getValue();
+            Team temp2 = first.getNext().getValue();
+            Team[] teamArray = new Team[2];
+            teamArray[0]=temp1;
+            teamArray[1]=temp2;
+            return teamArray;
         }
+    }
 
-        public void dequeueTwoTeams(Team team1, Team team2){
-            BracketQueue removeTwoItems = new BracketQueue();
-            for (int i = 0; i<1; i++){
-                removeTwoItems.dequeue(team1)
-            }
+    public Team[] dequeueTwoTeams(){
+        if(first == null)
+            return null;
+        else{
+            Team t1 = dequeue();
+            Team t2 = dequeue();
+            Team[] nextTeams = new Team[2];
+            nextTeams[0] = t1;
+            nextTeams[1] = t2;
+            i = i-2;
+            return nextTeams;
         }
+    }
 
-        public void enqueueWinner(Team team1){
-        //might have to take in an int instead of team because of the endcompetition.
+    public void createBracketQueue(Team[] teams){
+        //enqueue all of the teams onto the bracketQueue, randomize!.
+        BracketQueue queue = new BracketQueue();
+        for (int i=0; i<teams.length; i++){
+            queue.enqueue(teams);
         }
-
+    }
 
         public Bracket getFirst() {
             return first;
+        }
+
+        public int getTeamNum(){
+            return i;
         }
 
         public Bracket getLast() {

@@ -11,6 +11,7 @@ import com.company.Event;
  */
 public class EventManager {
     private Event[] events;
+    private Team[] teamM;
 
     /**
      * Construct a new com.company.EventManager
@@ -26,13 +27,27 @@ public class EventManager {
         };
     }
 
+    public EventManager(TeamManager teamManager){
+        teamM = teamManager.getTeams();
+        BracketQueue queue = new BracketQueue();
+        queue.createBracketQueue(teamM);
+    }
     /**
-     * Retrieve the events
+     * Retrieve the events with getevents and a single event with getoneEvent
      *
      * @return the events
      */
-    public Event[] getEvents() {
+    public Event[] getEvents()
+    {
         return events;
+    }
+
+    public Team[] getTeams(){
+        return teamM;
+    }
+
+    public Event getOneEvent(int X){
+        return events[X];
     }
 }
 

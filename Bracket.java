@@ -6,18 +6,21 @@ package com.company;
 public class Bracket {
 
         private Bracket next;
-        private int value;
-        private Team teams;
+        private Team value;
+        private Team[] teams;
 
         public Bracket() {
+            this.next = null;
+            this.value = null;
         }
 
-        public Bracket(Team teams) {
+        public Bracket(Team[] teams) {
             this.next=null;
             this.teams = teams;
+
         }
 
-        public Bracket(int v) {
+        public Bracket(Team v) {
             this.next = null;
             this.value = v;
         }
@@ -26,7 +29,7 @@ public class Bracket {
             return next;
         }
 
-        public int getValue() {
+        public Team getValue() {
             return value;
         }
 
@@ -34,7 +37,7 @@ public class Bracket {
             this.next = next;
         }
 
-        public void setValue(int value) {
+        public void setValue(Team value) {
             this.value = value;
         }
 

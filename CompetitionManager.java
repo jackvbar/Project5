@@ -4,31 +4,83 @@ package com.company; /**
 
 import com.company.Competition;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.Arrays;
+
 /**
  * This class manages a list of competitions.
  */
 public class CompetitionManager {
     private EventManager em;
     private TeamManager tm;
-
     private Competition head;
     private Competition tail;
     private int numCompetitions;
-    private CompetitionManager cm;
-    private  Competition c;
-
 
     /**
      * Construct a new com.company.CompetitionManager
      *
      * @param em the event manager that manages which events can be played in a competition
      * @param tm the team manager that manages the teams that can participate in a competition
-     */
+
     public CompetitionManager(EventManager em, TeamManager tm)
     {
         this.em = em;
         this.tm = tm;
     }
+    */
+    public CompetitionManager(EventManager em, int EventNum){
+        this.em = em;
+        BracketQueue compList = new BracketQueue();
+        compList.createBracketQueue(em.getTeams());
+        PlacingStack placeStack = new PlacingStack();
+        int[] doneComps = new int[em.getEvents().length];
+        BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
+        Team loser;
+        Team winner;
+        Boolean check = false;
+        int i = 0;
+    try {
+        while (check == false) {
+            System.out.println("What number event would you like to play?");
+            int gameEvent = Integer.parseInt(userInput.readLine());
+            if (!Arrays.asList(doneComps).contains(gameEvent)) {
+                check = true;
+                doneComps[i] = gameEvent;
+                i++;
+            }
+            if (gameEvent > em.getEvents().length) {
+                System.out.println("please enter a number between 1-8");
+            } else {
+                System.out.println("Currently Creating a competition of " + em.getOneEvent(gameEvent));
+                Event currEvent = em.getOneEvent(gameEvent);
+			/*Team[] playingTeams = CompetitionList.getNextTeams();
+			Team t1 = playingTeams[0];
+			Team t2 = playingTeams[1];*/
+            }
+            while (compList.peekNextTeams() != null){
+                Team[] playingTeams = compList.dequeueTwoTeams();
+                Team t1 = playingTeams[0];
+                Team t2 = playingTeams[1];
+                Team[] results = compete(em.getOneEvent(gameEvent), t1, t2);
+                compList.enqueue(results[0]);
+                placeStack.push(results[1]);
+            }
+            placeStack.push(compList.getFirst().getTeamNum());
+
+            int count = 1;
+            System.out.println("Competition has ended. Here are the results");
+            while (!StackList.isEmpty()) {
+                System.out.println(count + ": " + StackList.pop().toString());
+                count++;
+            }
+
+        }
+    }catch(IOException io) {
+        System.out.println('0');
+    }}
 
     /**
      * Start a new competition, this competition will exist until endCompetition is called
@@ -81,15 +133,11 @@ public class CompetitionManager {
      * @param competition the competition to end
      * @param winningTeam the team that won the competition
      */
-
-
-
     public void endCompetition(ICompetition competition, Team winningTeam)
     {
-        cm.endCompetition(c, c.getAwayTeam());
         Competition currItem = head;
 
-        //find the item (or find the end of the list)
+        //find the item (or find the end of the list
         while(currItem != null && currItem != competition)
             currItem = currItem.getNext();
 
@@ -119,9 +167,7 @@ public class CompetitionManager {
             currItem.getHomeTeam().incrementLosses();
             currItem.getAwayTeam().incrementWins();
         }
-
-
-      }
+    }
 
     /**
      * Retrieve the events that are currently not being played (they are open).

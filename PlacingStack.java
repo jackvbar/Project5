@@ -11,31 +11,26 @@ public class PlacingStack {
     private Placing top = null;
 
     //Push node on top of the stack
-    public void push(int item) {
-        Placing node = new Placing(item);
+    public void push(Team item) {
+        Placing place = new Placing(item);
         if (top == null) {
-            top = node;
+            top = place;
         } else {
-            node.next = top;
-            top = node;
+            place.next = top;
+            top = place;
         }
-
         length++;
     }
 
     //Pop (Remove and return) node on top if the stack
-    public int pop() {
-        int result = -1;
+    public Team pop() {
+        Team result = null;
         if (top != null) {
-            result = top.data;
+            result = top.teamData;
             top = top.next;
             length--;
         }
         return result;
     }
-
-    //Returns node what is on top of the stack but does remove that node from the stack
-    public int peek() {
-        return (top == null) ? -1 : top.data;
     }
-}
+
