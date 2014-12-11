@@ -32,5 +32,13 @@ public class PlacingStack {
         }
         return result;
     }
+
+    public Boolean isEmpty(){
+        if (top == null)
+                return true;
+        else{
+            return false;
+        }
     }
+}
 

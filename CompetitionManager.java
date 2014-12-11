@@ -8,6 +8,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
+import java.util.Random;
 
 /**
  * This class manages a list of competitions.
@@ -23,60 +24,69 @@ public class CompetitionManager {
      * Construct a new com.company.CompetitionManager
      *
      * @param em the event manager that manages which events can be played in a competition
-     * @param tm the team manager that manages the teams that can participate in a competition
-
+     * @param tm team manager.
+     */
     public CompetitionManager(EventManager em, TeamManager tm)
     {
         this.em = em;
         this.tm = tm;
     }
-    */
-    public CompetitionManager(EventManager em, int EventNum){
+
+    public void Competition(EventManager em, int EventNum){
         this.em = em;
         BracketQueue compList = new BracketQueue();
         compList.createBracketQueue(em.getTeams());
         PlacingStack placeStack = new PlacingStack();
         int[] doneComps = new int[em.getEvents().length];
         BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in));
-        Team loser;
-        Team winner;
         Boolean check = false;
         int i = 0;
     try {
         while (check == false) {
-            System.out.println("What number event would you like to play?");
-            int gameEvent = Integer.parseInt(userInput.readLine());
-            if (!Arrays.asList(doneComps).contains(gameEvent)) {
+            System.out.println("What event would you like to play? Enter the Number 1 for Washoos, 2 for Horseshoes, 3 for Cornhole, 4 for CanJam, 5 for LadderBall, and 6 for StickBall");
+            EventNum = Integer.parseInt(userInput.readLine());
+            if (!Arrays.asList(doneComps).contains(EventNum)) {
                 check = true;
-                doneComps[i] = gameEvent;
+                doneComps[i] = EventNum;
                 i++;
             }
-            if (gameEvent > em.getEvents().length) {
+            if (EventNum > em.getEvents().length) {
                 System.out.println("please enter a number between 1-8");
             } else {
-                System.out.println("Currently Creating a competition of " + em.getOneEvent(gameEvent));
-                Event currEvent = em.getOneEvent(gameEvent);
-			/*Team[] playingTeams = CompetitionList.getNextTeams();
-			Team t1 = playingTeams[0];
-			Team t2 = playingTeams[1];*/
+                Event currEvent = em.getOneEvent(EventNum);
+                System.out.println("Currently Creating a competition of " + em.getOneEvent(EventNum));
             }
             while (compList.peekNextTeams() != null){
                 Team[] playingTeams = compList.dequeueTwoTeams();
-                Team t1 = playingTeams[0];
-                Team t2 = playingTeams[1];
-                Team[] results = compete(em.getOneEvent(gameEvent), t1, t2);
-                compList.enqueue(results[0]);
-                placeStack.push(results[1]);
+                Random rn = new Random();
+                Team team1;
+                Team team2;
+                Team[] winner = new Team[1];
+                int n = 1 - 0 + 1;
+                int j = rn.nextInt() % n;
+                int random1 =  0 + j;
+                Random rNum = new Random();
+                int k = 1 - 0 + 1;
+                int s = rNum.nextInt() % k;
+                int random2 =  0 + s;
+                if (random1>random2){
+                     team1 = winner[0];
+                     team2 = playingTeams[1];
+                     compList.enqueue(winner);
+                     placeStack.push(team2);
+                }else {
+                    team1 = playingTeams[1];
+                    team2 = winner[0];
+                    compList.enqueue(winner);
+                    placeStack.push(team1);
+                }
             }
-            placeStack.push(compList.getFirst().getTeamNum());
-
             int count = 1;
             System.out.println("Competition has ended. Here are the results");
-            while (!StackList.isEmpty()) {
-                System.out.println(count + ": " + StackList.pop().toString());
+            while (!placeStack.isEmpty()) {
+                System.out.println(count + ": " + placeStack.pop().toString());
                 count++;
             }
-
         }
     }catch(IOException io) {
         System.out.println('0');
@@ -89,7 +99,7 @@ public class CompetitionManager {
      * @param homeTeam the home team playing this competition
      * @param awayTeam the away team playing this competition
      */
-    public void startCompetition(Event event, Team homeTeam, Team awayTeam)
+   /* public void startCompetition(Event event, Team homeTeam, Team awayTeam)
     {
         //create the new competition object
         Competition newItem = new Competition(event, homeTeam, awayTeam);

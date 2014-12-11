@@ -221,8 +221,7 @@ public class Main {
             if(!isValidInput)
                 System.out.println("Input must be a number between 1 and " + freeTeams.length);
         } while(!isValidInput);
-
-        cm.startCompetition(freeEvents[eventIdx-1], freeTeams[homeTeamIdx-1], freeTeams[awayTeamIdx-1]);
+        cm.Competition(EventManager em, int EventNum);
     }
 
     /**
